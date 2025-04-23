@@ -1,0 +1,431 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>编译器循环语句实现 | Reed's Blog</title><meta name="author" content="Reed"><meta name="copyright" content="Reed"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="实现编译原理课程大作业后，写一篇自上而下实现循环语句的总结，主要包括 for while break continue 的实现。  不支持break continue 的 while 语句实现 首先我们观察一个简单的 while 语句的实现，代码如下： 1234int a = 0;while (a < 10) {    a++;} 不难发现  while 语句的结构为：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译器循环语句实现">
+<meta property="og:url" content="https://reed244.github.io/undefined/60549.html">
+<meta property="og:site_name" content="Reed's Blog">
+<meta property="og:description" content="实现编译原理课程大作业后，写一篇自上而下实现循环语句的总结，主要包括 for while break continue 的实现。  不支持break continue 的 while 语句实现 首先我们观察一个简单的 while 语句的实现，代码如下： 1234int a = 0;while (a < 10) {    a++;} 不难发现  while 语句的结构为：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://reed244.github.io/img/avatar.png">
+<meta property="article:published_time" content="2025-04-22T14:05:00.000Z">
+<meta property="article:modified_time" content="2025-04-22T14:05:00.000Z">
+<meta property="article:author" content="Reed">
+<meta property="article:tag" content="编译器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://reed244.github.io/img/avatar.png"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://reed244.github.io/undefined/60549.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?092ed00f59c448c2f6cf7b88f0d9310f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"1VI64QRFJ7","apiKey":"90518b52b5d989a35531a920f576851d","indexName":"my_blog_index","hitsPerPage":6,"languages":{"input_placeholder":"搜索文章","hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，耗时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '编译器循环语句实现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="/css/modify.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.css" integrity="sha384-bsHo4/LA+lkZv61JspMDQB9QP1TtO4IgOf2yYS+J6VdAYLVyx1c3XKcsHh0Vy8Ws" crossorigin="anonymous"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" src="https://reed244.github.io/img/avatar.png"><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+loadingPercentage.style.color = "black";
+let loadingPercentageTimer = setInterval(function() {
+  var progressBar = document.querySelector(".pace-progress");
+  if (!progressBar) return
+  var currentValue = progressBar.getAttribute("data-progress-text");
+  if (currentValue !== loadingPercentage.textContent) {
+    loadingPercentage.textContent = currentValue;
+    if (currentValue === "100%") {
+      clearInterval(loadingPercentageTimer);
+    }
+  }
+}, 100);
+const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/progress_bar.css"><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background-image: url(/img/preview.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-keyboard"></i><span> 博客</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/collect/"><i class="fa-fw fas fa-star"></i><span> 收藏</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Reed's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">编译器循环语句实现</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-keyboard"></i><span> 博客</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/collect/"><i class="fa-fw fas fa-star"></i><span> 收藏</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">编译器循环语句实现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-22T14:05:00.000Z" title="发表于 2025-04-22 22:05:00">2025-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-22T14:05:00.000Z" title="更新于 2025-04-22 22:05:00">2025-04-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E8%AF%91%E5%99%A8/">编译器</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>实现编译原理课程大作业后，写一篇自上而下实现循环语句的总结，主要包括 for while break continue 的实现。</p>
+<h2 id="不支持break-continue-的-while-语句实现"><a class="markdownIt-Anchor" href="#不支持break-continue-的-while-语句实现"></a> 不支持break continue 的 while 语句实现</h2>
+<p>首先我们观察一个简单的 while 语句的实现，代码如下：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) {</span><br><span class="line">    a++;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>不难发现</p>
+<ul>
+<li>while 语句的结构为：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="string">'('</span> condition <span class="string">')'</span> <span class="string">'{'</span> statement <span class="string">'}'</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>while 语句的流程图如下：</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">while</span></span><br><span class="line">begin:</span><br><span class="line">      condition</span><br><span class="line">      jz end</span><br><span class="line">      statement</span><br><span class="line">      jump begin</span><br><span class="line">end:</span><br></pre></td></tr></tbody></table></figure>
+<p>所以可以简单的顺序遍历源代码生成目标代码，你需要在扫描过程中记录 begin 与 and 的位置。这里我们假设使用 statement 函数递归调用来实现语句的处理，token 表示当前扫描到的字符，int *text 代表目标代码的位置， get_next_token() 函数表示获取下一个 token，match() 函数表示匹配当前 token。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span> {</span><br><span class="line">  <span class="type">int</span> *begin = <span class="number">0</span>, *end = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 其他语句处理</span></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="string">'while'</span>) {</span><br><span class="line">    token = get_next_token();</span><br><span class="line">    begin = ++text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理条件表达式</span></span><br><span class="line">    match(<span class="string">'('</span>);</span><br><span class="line">    condition();</span><br><span class="line">    match(<span class="string">')'</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JZ; <span class="comment">// 这里假设 JZ 是一个跳转指令</span></span><br><span class="line">    end = ++text;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理语句</span></span><br><span class="line">    match(<span class="string">'{'</span>);</span><br><span class="line">    statement();</span><br><span class="line">    match(<span class="string">'}'</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    *end = (<span class="type">int</span>)text;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>大部分代码应该容易看懂，<code>begin = ++text</code> 记录cond之前的地址，后使用<code>*++text = (int)begin</code> 将 begin 的地址存储到当前指令中。</p>
+<p>这里麻烦的事当需要存储end的地址时，它的地址还没有确定，所以我们需要先使用end指向当前指令<code>*end = (int)text</code>，然后在后面使用<code>*end = (int)text</code> 将 end 的地址存储到当前指令中。这样就完成了一个简单的 while 语句的实现。</p>
+<h2 id="支持-break-continue-的-while-语句实现"><a class="markdownIt-Anchor" href="#支持-break-continue-的-while-语句实现"></a> 支持 break continue 的 while 语句实现</h2>
+<p>我们知道 break 语句的效果是跳出循环，即 <code>JMP end</code>。 continue 语句的效果是跳过当前循环，继续下一次循环，即 <code>JMP begin</code>。 所以当我们扫描到这两个语句时，添加对应的指令即可。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span> {</span><br><span class="line">  <span class="comment">// 其他语句处理...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="keyword">break</span> ){</span><br><span class="line">    match(<span class="keyword">break</span>);</span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)end;</span><br><span class="line">    match(<span class="string">';'</span>);</span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">continue</span>) {</span><br><span class="line">    match(<span class="keyword">continue</span>);</span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    match(<span class="string">';'</span>);</span><br><span class="line">  } </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>接下来我们仔细思考编译的流程，break continue 语句的处理需要在 while 语句的处理过程中进行，也就是 break continue 语句是位于 while 语句的内部的。continue 是跳转到 begin 处，所以当我们扫描到 continue 语句时，我们的begin指针已经指向了 while 语句的开始处。但是处理break语句时，end指针还没有指向 while 语句的结束处，所以我们借鉴上面的做法，先将 end 指向当前指令，然后在后面使用 <code>*end = (int)text</code> 将 end 的地址存储到当前指令中。<br>
+好了，我们已经确定了实现的思路，但是请注意 begin 与 end 个只有一个指针，无法应对循环嵌套的情况，所以我们选择使用栈来存储 begin 与 end 的地址。我们可以使用一个指针数组来实现栈的功能，代码如下：</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX 100</span></span><br><span class="line"><span class="type">int</span> break_stack[MAX];</span><br><span class="line"><span class="type">int</span> break_top = <span class="number">-1</span>;</span><br><span class="line"><span class="type">int</span> continue_stack[MAX];</span><br><span class="line"><span class="type">int</span> continue_top = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span>{</span><br><span class="line">  <span class="type">int</span> *begin = <span class="number">0</span>, *end = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 其他语句处理...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="string">'while'</span>) {</span><br><span class="line">    token = get_next_token();</span><br><span class="line">    begin = ++text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将 begin 和 end 压入栈中</span></span><br><span class="line">    <span class="comment">// 因为无法预测会出现多少个 break 语句，所以这里使用 break_start_top 记录起始位置</span></span><br><span class="line">    <span class="type">int</span> break_start_top = break_top;</span><br><span class="line">    continue_stack[++continue_top] = (<span class="type">int</span>)begin;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理条件表达式</span></span><br><span class="line">    match(<span class="string">'('</span>);</span><br><span class="line">    condition();</span><br><span class="line">    match(<span class="string">')'</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JZ; </span><br><span class="line">    end = ++text;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理语句</span></span><br><span class="line">    match(<span class="string">'{'</span>);</span><br><span class="line">    statement();</span><br><span class="line">    match(<span class="string">'}'</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    *end = (<span class="type">int</span>)text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 出栈</span></span><br><span class="line">    <span class="keyword">while</span> (break_top &gt; break_start_top) {</span><br><span class="line">      *((<span class="type">int</span> *)breaks_stack[break_top--]) = (<span class="type">int</span>)(text);</span><br><span class="line">    }</span><br><span class="line">    continue_top--;</span><br><span class="line"></span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">break</span>) {</span><br><span class="line">    match(<span class="keyword">break</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (break_top == <span class="number">-1</span>) {</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Error: break statement not in loop\n"</span>);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    break_stack[++break_top] = (<span class="type">int</span>)end;</span><br><span class="line"></span><br><span class="line">    match(<span class="string">';'</span>);</span><br><span class="line">  } <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">continue</span>) {</span><br><span class="line">    match(<span class="keyword">continue</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (continue_top == <span class="number">-1</span>) {</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"Error: continue statement not in loop\n"</span>);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = continue_stack[continue_top];</span><br><span class="line"></span><br><span class="line">    match(<span class="string">';'</span>);</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="支持-break-continue-的-for-语句实现"><a class="markdownIt-Anchor" href="#支持-break-continue-的-for-语句实现"></a> 支持 break continue 的 for 语句实现</h2>
+<p>for 语句的实现与 while 语句类似，</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for语句的结构为</span></span><br><span class="line"><span class="keyword">for</span> <span class="string">'('</span> init <span class="string">';'</span> condition <span class="string">';'</span> step <span class="string">')'</span> <span class="string">'{'</span> statement <span class="string">'}'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for语句的执行顺序</span></span><br><span class="line"></span><br><span class="line">      init</span><br><span class="line">begin:</span><br><span class="line">      condition</span><br><span class="line">      JZ end</span><br><span class="line">      statement</span><br><span class="line">      step</span><br><span class="line">      JMP begin</span><br><span class="line">end:</span><br></pre></td></tr></tbody></table></figure>
+<p>可以发现 for 语句相较于 while 语句麻烦的地方是，step 语句源码在的地方和对应目标代码的位置不一致。所以很自然的我们就可以将step的目标代码移到statement之后。这里的 int *src 代表源码的地址。</p>
+<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span>{</span><br><span class="line">  <span class="keyword">if</span> (token == For){</span><br><span class="line">    <span class="comment">// step 之前的处理...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 记录扫描到 step 的位置信息</span></span><br><span class="line">    inc_expr = src<span class="number">-1</span>;</span><br><span class="line">    inc_token = token;</span><br><span class="line">    inc_text = text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 step 语句</span></span><br><span class="line">    match(<span class="string">';'</span>);</span><br><span class="line">    step();</span><br><span class="line">    match(<span class="string">')'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 回复扫描状态</span></span><br><span class="line">    text = inc_text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    statement();</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 step 语句</span></span><br><span class="line">    old_src = src;</span><br><span class="line">    src = inc_expr;</span><br><span class="line">    step();</span><br><span class="line">    src = old_src;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>这里的 inc_expr 代表 step 语句的目标代码地址，inc_token 代表 step 语句的 token，inc_text 代表 step 语句的文本指针。这三个变量的作用是记录 step 语句的状态，方便后续的处理。处理完 step 语句后，我们需要将目标代码指针恢复到原来的位置，用来删除 step 语句的目标代码。在处理完 statement 语句后，我们先保存当先的源码地址，然后将源码地址指向 step 语句的目标代码地址，生成对应的目标代码，最后将源码地址恢复到原来的位置。</p>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>自上而下的语法分析就是递归下降分析，使用递归函数来实现语法分析。所以这里我们使用栈来存储循环语句的跳转地址是非常自然的。请注意上文中的 c 代码是伪代码，实际的实现需要考虑更多的细节，比如语法错误的处理，内存的管理等。这里我们只讨论了循环语句的实现思路。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://reed244.github.io">Reed</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://reed244.github.io/undefined/60549.html">https://reed244.github.io/undefined/60549.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://reed244.github.io" target="_blank">Reed's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E8%AF%91%E5%99%A8/">编译器</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/undefined/36191.html" title="龙芯杯日记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">龙芯杯日记</div></div><div class="info-2"><div class="info-item-1">这篇文章用于记录我备战龙芯被的过程，以及比赛的一些心得体会。 借鉴资料：  《CPU 设计实战》 计算机体系结构研讨课 2020 秋季 UCAS 《CPU 设计实战》 工程环境及 RTL 代码合集 《计算机体系结构基础》 重庆大学计算机组成原理实验与参考实现   2025-02-17 通过仔细对照信号波形图，我发现了三个问题：  有些信号名称写错了，导致了后续的错误； alu 与 controller 模块的内容有错误，导致输出的信号不对； 取指令之前的地址选择信号有问题，导致了取指令错误。  其中第三个问题尤其关键，这可能是波形图后续出现问题的根源。我将在明天继续排查这个问题。 补：想展示我的波形图，发现不支持，这个问题也等明天解决吧。  2025-02-18  上午 继续排查信号问题，发现原来是写代码时信号名称写错了，导致平白出现一个高阻抗信号，导致了后续的错误，现在已经解决。但是当运行到 beq 指令时，发现了一个新的问题，我将在下午继续排查。  下午 发现 alu 输入 a 信号选择有问题，导致 aluout 出错。 发现将 regfile...</div></div></div></a></nav><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">Reed</div><div class="author-info-description">爱空想，爱技术</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/reed244"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/reed244" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎访问我的博客，这里是我的个人博客，主要用来记录一些学习笔记和生活感悟，希望能对你有所帮助。如果你有什么问题或者建议，欢迎在评论区留言，我会尽快回复的。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E6%94%AF%E6%8C%81break-continue-%E7%9A%84-while-%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text"> 不支持break continue 的 while 语句实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81-break-continue-%E7%9A%84-while-%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text"> 支持 break continue 的 while 语句实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E6%8C%81-break-continue-%E7%9A%84-for-%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text"> 支持 break continue 的 for 语句实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text"> 总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/60549.html" title="编译器循环语句实现">编译器循环语句实现</a><time datetime="2025-04-22T14:05:00.000Z" title="发表于 2025-04-22 22:05:00">2025-04-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/36191.html" title="龙芯杯日记">龙芯杯日记</a><time datetime="2025-02-16T16:00:00.000Z" title="发表于 2025-02-17 00:00:00">2025-02-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/14200.html" title="读中西印哲学日记">读中西印哲学日记</a><time datetime="2025-01-14T12:05:00.000Z" title="发表于 2025-01-14 20:05:00">2025-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/undefined/44750.html" title="博客搭建日记">博客搭建日记</a><time datetime="2025-01-10T12:05:00.000Z" title="发表于 2025-01-10 20:05:00">2025-01-10</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">©2025 By Reed</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'reed244/reed244.github.io',
+      'data-repo-id': 'R_kgDONfqzGA',
+      'data-category-id': 'DIC_kwDONfqzGM4Cl9MR',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !true) {
+    if (true) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.js" integrity="sha384-4z8mjH4yIpuK9dIQGR1JwbrfYsStrNK6MP+2Enhue4eyo0XlBDXOIPc8b6ZU0ajz" crossorigin="anonymous"></script><div class="aplayer no-destroy" data-id="13148042821" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["link[rel=\"canonical\"]","meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/algoliasearch/dist/lite/builds/browser.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instantsearch.js/dist/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>
