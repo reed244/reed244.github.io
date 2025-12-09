@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"reed244.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="爱空想，爱技术">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reed&#39;s Blog">
+<meta property="og:url" content="https://reed244.github.io/index.html">
+<meta property="og:site_name" content="Reed&#39;s Blog">
+<meta property="og:description" content="爱空想，爱技术">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Reed">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://reed244.github.io/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Reed's Blog</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Reed's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Reed</p>
+  <div class="site-description" itemprop="description">爱空想，爱技术</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://reed244.github.io/2025/04/22/%E7%BC%96%E8%AF%91%E5%99%A8%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Reed">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Reed's Blog">
+      <meta itemprop="description" content="爱空想，爱技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Reed's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/04/22/%E7%BC%96%E8%AF%91%E5%99%A8%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">编译器循环语句实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-22 22:05:00" itemprop="dateCreated datePublished" datetime="2025-04-22T22:05:00+08:00">2025-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E8%AF%91%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">编译器</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>实现编译原理课程大作业后，写一篇自上而下实现循环语句的总结，主要包括 for while break continue 的实现。</p>
+<h2 id="不支持break-continue-的-while-语句实现"><a href="#不支持break-continue-的-while-语句实现" class="headerlink" title="不支持break continue 的 while 语句实现"></a>不支持break continue 的 while 语句实现</h2><p>首先我们观察一个简单的 while 语句的实现，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (a &lt; <span class="number">10</span>) &#123;</span><br><span class="line">    a++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不难发现</p>
+<ul>
+<li>while 语句的结构为：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="string">&#x27;(&#x27;</span> condition <span class="string">&#x27;)&#x27;</span> <span class="string">&#x27;&#123;&#x27;</span> statement <span class="string">&#x27;&#125;&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>while 语句的流程图如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      <span class="keyword">while</span></span><br><span class="line">begin:</span><br><span class="line">      condition</span><br><span class="line">      jz end</span><br><span class="line">      statement</span><br><span class="line">      jump begin</span><br><span class="line">end:</span><br></pre></td></tr></table></figure>
+<p>所以可以简单的顺序遍历源代码生成目标代码，你需要在扫描过程中记录 begin 与 and 的位置。这里我们假设使用 statement 函数递归调用来实现语句的处理，token 表示当前扫描到的字符，int *text 代表目标代码的位置， get_next_token() 函数表示获取下一个 token，match() 函数表示匹配当前 token。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> *begin = <span class="number">0</span>, *end = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 其他语句处理</span></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="string">&#x27;while&#x27;</span>) &#123;</span><br><span class="line">    token = get_next_token();</span><br><span class="line">    begin = ++text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理条件表达式</span></span><br><span class="line">    match(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    condition();</span><br><span class="line">    match(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JZ; <span class="comment">// 这里假设 JZ 是一个跳转指令</span></span><br><span class="line">    end = ++text;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理语句</span></span><br><span class="line">    match(<span class="string">&#x27;&#123;&#x27;</span>);</span><br><span class="line">    statement();</span><br><span class="line">    match(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    *end = (<span class="type">int</span>)text;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大部分代码应该容易看懂，<code>begin = ++text</code> 记录cond之前的地址，后使用<code>*++text = (int)begin</code> 将 begin 的地址存储到当前指令中。</p>
+<p>这里麻烦的事当需要存储end的地址时，它的地址还没有确定，所以我们需要先使用end指向当前指令<code>*end = (int)text</code>，然后在后面使用<code>*end = (int)text</code> 将 end 的地址存储到当前指令中。这样就完成了一个简单的 while 语句的实现。</p>
+<h2 id="支持-break-continue-的-while-语句实现"><a href="#支持-break-continue-的-while-语句实现" class="headerlink" title="支持 break continue 的 while 语句实现"></a>支持 break continue 的 while 语句实现</h2><p>我们知道 break 语句的效果是跳出循环，即 <code>JMP end</code>。 continue 语句的效果是跳过当前循环，继续下一次循环，即 <code>JMP begin</code>。 所以当我们扫描到这两个语句时，添加对应的指令即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="comment">// 其他语句处理...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="keyword">break</span> )&#123;</span><br><span class="line">    match(<span class="keyword">break</span>);</span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)end;</span><br><span class="line">    match(<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">continue</span>) &#123;</span><br><span class="line">    match(<span class="keyword">continue</span>);</span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    match(<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来我们仔细思考编译的流程，break continue 语句的处理需要在 while 语句的处理过程中进行，也就是 break continue 语句是位于 while 语句的内部的。continue 是跳转到 begin 处，所以当我们扫描到 continue 语句时，我们的begin指针已经指向了 while 语句的开始处。但是处理break语句时，end指针还没有指向 while 语句的结束处，所以我们借鉴上面的做法，先将 end 指向当前指令，然后在后面使用 <code>*end = (int)text</code> 将 end 的地址存储到当前指令中。<br>好了，我们已经确定了实现的思路，但是请注意 begin 与 end 个只有一个指针，无法应对循环嵌套的情况，所以我们选择使用栈来存储 begin 与 end 的地址。我们可以使用一个指针数组来实现栈的功能，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX 100</span></span><br><span class="line"><span class="type">int</span> break_stack[MAX];</span><br><span class="line"><span class="type">int</span> break_top = <span class="number">-1</span>;</span><br><span class="line"><span class="type">int</span> continue_stack[MAX];</span><br><span class="line"><span class="type">int</span> continue_top = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">int</span> *begin = <span class="number">0</span>, *end = <span class="number">0</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 其他语句处理...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (token == <span class="string">&#x27;while&#x27;</span>) &#123;</span><br><span class="line">    token = get_next_token();</span><br><span class="line">    begin = ++text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将 begin 和 end 压入栈中</span></span><br><span class="line">    <span class="comment">// 因为无法预测会出现多少个 break 语句，所以这里使用 break_start_top 记录起始位置</span></span><br><span class="line">    <span class="type">int</span> break_start_top = break_top;</span><br><span class="line">    continue_stack[++continue_top] = (<span class="type">int</span>)begin;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理条件表达式</span></span><br><span class="line">    match(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">    condition();</span><br><span class="line">    match(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JZ; </span><br><span class="line">    end = ++text;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理语句</span></span><br><span class="line">    match(<span class="string">&#x27;&#123;&#x27;</span>);</span><br><span class="line">    statement();</span><br><span class="line">    match(<span class="string">&#x27;&#125;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = (<span class="type">int</span>)begin;</span><br><span class="line">    *end = (<span class="type">int</span>)text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 出栈</span></span><br><span class="line">    <span class="keyword">while</span> (break_top &gt; break_start_top) &#123;</span><br><span class="line">      *((<span class="type">int</span> *)breaks_stack[break_top--]) = (<span class="type">int</span>)(text);</span><br><span class="line">    &#125;</span><br><span class="line">    continue_top--;</span><br><span class="line"></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">break</span>) &#123;</span><br><span class="line">    match(<span class="keyword">break</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (break_top == <span class="number">-1</span>) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Error: break statement not in loop\n&quot;</span>);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    break_stack[++break_top] = (<span class="type">int</span>)end;</span><br><span class="line"></span><br><span class="line">    match(<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (token == <span class="keyword">continue</span>) &#123;</span><br><span class="line">    match(<span class="keyword">continue</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (continue_top == <span class="number">-1</span>) &#123;</span><br><span class="line">      <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Error: continue statement not in loop\n&quot;</span>);</span><br><span class="line">      <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    *++text = JMP;</span><br><span class="line">    *++text = continue_stack[continue_top];</span><br><span class="line"></span><br><span class="line">    match(<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="支持-break-continue-的-for-语句实现"><a href="#支持-break-continue-的-for-语句实现" class="headerlink" title="支持 break continue 的 for 语句实现"></a>支持 break continue 的 for 语句实现</h2><p>for 语句的实现与 while 语句类似，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># for语句的结构为</span></span><br><span class="line"><span class="keyword">for</span> <span class="string">&#x27;(&#x27;</span> init <span class="string">&#x27;;&#x27;</span> condition <span class="string">&#x27;;&#x27;</span> step <span class="string">&#x27;)&#x27;</span> <span class="string">&#x27;&#123;&#x27;</span> statement <span class="string">&#x27;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for语句的执行顺序</span></span><br><span class="line"></span><br><span class="line">      init</span><br><span class="line">begin:</span><br><span class="line">      condition</span><br><span class="line">      JZ end</span><br><span class="line">      statement</span><br><span class="line">      step</span><br><span class="line">      JMP begin</span><br><span class="line">end:</span><br></pre></td></tr></table></figure>
+<p>可以发现 for 语句相较于 while 语句麻烦的地方是，step 语句源码在的地方和对应目标代码的位置不一致。所以很自然的我们就可以将step的目标代码移到statement之后。这里的 int *src 代表源码的地址。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">statement</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (token == For)&#123;</span><br><span class="line">    <span class="comment">// step 之前的处理...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 记录扫描到 step 的位置信息</span></span><br><span class="line">    inc_expr = src<span class="number">-1</span>;</span><br><span class="line">    inc_token = token;</span><br><span class="line">    inc_text = text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 step 语句</span></span><br><span class="line">    match(<span class="string">&#x27;;&#x27;</span>);</span><br><span class="line">    step();</span><br><span class="line">    match(<span class="string">&#x27;)&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 回复扫描状态</span></span><br><span class="line">    text = inc_text;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">    statement();</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 step 语句</span></span><br><span class="line">    old_src = src;</span><br><span class="line">    src = inc_expr;</span><br><span class="line">    step();</span><br><span class="line">    src = old_src;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的 inc_expr 代表 step 语句的目标代码地址，inc_token 代表 step 语句的 token，inc_text 代表 step 语句的文本指针。这三个变量的作用是记录 step 语句的状态，方便后续的处理。处理完 step 语句后，我们需要将目标代码指针恢复到原来的位置，用来删除 step 语句的目标代码。在处理完 statement 语句后，我们先保存当先的源码地址，然后将源码地址指向 step 语句的目标代码地址，生成对应的目标代码，最后将源码地址恢复到原来的位置。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>自上而下的语法分析就是递归下降分析，使用递归函数来实现语法分析。所以这里我们使用栈来存储循环语句的跳转地址是非常自然的。请注意上文中的 c 代码是伪代码，实际的实现需要考虑更多的细节，比如语法错误的处理，内存的管理等。这里我们只讨论了循环语句的实现思路。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://reed244.github.io/2025/02/16/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Reed">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Reed's Blog">
+      <meta itemprop="description" content="爱空想，爱技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Reed's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/02/16/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/" class="post-title-link" itemprop="url">龙芯杯日记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-17 00:00:00" itemprop="dateCreated datePublished" datetime="2025-02-17T00:00:00+08:00">2025-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-03-11 00:00:00" itemprop="dateModified" datetime="2025-03-11T00:00:00+08:00">2025-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>这篇文章用于记录我备战龙芯被的过程，以及比赛的一些心得体会。</p>
+<p>借鉴资料：</p>
+<ol>
+<li>《CPU 设计实战》</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cebarobot/UCAS-Computer-Architecture-Lab">计算机体系结构研讨课 2020 秋季 UCAS 《CPU 设计实战》 工程环境及 RTL 代码合集</a></li>
+<li>《计算机体系结构基础》</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lvyufeng/step_into_mips">重庆大学计算机组成原理实验与参考实现</a></li>
+</ol>
+<h2 id="2025-02-17"><a href="#2025-02-17" class="headerlink" title="2025-02-17"></a>2025-02-17</h2><p>通过仔细对照信号波形图，我发现了三个问题：</p>
+<ol>
+<li>有些信号名称写错了，导致了后续的错误；</li>
+<li>alu 与 controller 模块的内容有错误，导致输出的信号不对；</li>
+<li>取指令之前的地址选择信号有问题，导致了取指令错误。</li>
+</ol>
+<p>其中第三个问题尤其关键，这可能是波形图后续出现问题的根源。我将在明天继续排查这个问题。</p>
+<p>补：想展示我的波形图，发现不支持，这个问题也等明天解决吧。</p>
+<h2 id="2025-02-18"><a href="#2025-02-18" class="headerlink" title="2025-02-18"></a>2025-02-18</h2><h3 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h3><p>继续排查信号问题，发现原来是写代码时信号名称写错了，导致平白出现一个高阻抗信号，导致了后续的错误，现在已经解决。但是当运行到 beq 指令时，发现了一个新的问题，我将在下午继续排查。</p>
+<h3 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h3><p>发现 alu 输入 a 信号选择有问题，导致 aluout 出错。</p>
+<p>发现将 regfile 写入从上升沿触发改为下降沿触发后，波形图正常了。但是仍需排查结果是否正确且上升沿为什么不行。<br>beq 指令出现错误，还需要继续排查。</p>
+<h2 id="2025-02-19"><a href="#2025-02-19" class="headerlink" title="2025-02-19"></a>2025-02-19</h2><h3 id="上午-1"><a href="#上午-1" class="headerlink" title="上午"></a>上午</h3><p>第一条 beq 指令，没有发生跳转，但是他却清空了后一条指令的寄存器，导致后一条指令无法正常执行。最后一条无条件跳转 J 指令，却没有跳转，导致多执行了数条指令。</p>
+<p>当创建 iprom 时，若我不勾选 generate address interface with 32 bits 会导致输入地址与取出的指令不一致，这也是一个问题。</p>
+<p>问题一是由于 ip 核读取时，至少会晚一个周期。所以本该被延迟的信号的下一个信号会被延迟，导致本该被延迟信号的消失。</p>
+<h3 id="下午-1"><a href="#下午-1" class="headerlink" title="下午"></a>下午</h3><p>目前成功将所有问题解决。当令 ip 核 clk 下降沿触发时，可以解决晚一个周期的问题。regfile 写入下降沿触发时为了避开上升沿写入，这样的话数据冒险可以少考虑一个周期。但是 iprom 的问题还是不能理解。</p>
+<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/36191/mips_instr.png" alt="指令"></p>
+<p>算术指令，逻辑运算指令，变量位移指令（sllv, srlv, srav）,访存指令都可以复用 alu，只需要修改 alu 的控制信号即可。</p>
+<p><img src="/36191/cpu1.png" alt="cpu"><br><img src="/36191/cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
+<h2 id="2025-02-21"><a href="#2025-02-21" class="headerlink" title="2025-02-21"></a>2025-02-21</h2><ol>
+<li>更改 controller 与 alu 模块，使其可以支持所有指令。其中 controller 模块的控制信号生成部分没有完成，且更改部分还没有经过检测。</li>
+<li>为了便于以后更改 cpu 框架，画出了 cpu 的框架图。</li>
+<li>next_pc 修改为四选一多路选择器，可以选择 pc+4, pc+4+imm, pc+4+imm&lt;&lt;2,rs。<br>实现 jal 指令需要 PC+8 存入 31 号寄存器，所以 alu 第一源操作数需要添加一个选择信号，选择 PC+8，第二源操作添加一个选择信号，选择 4.</li>
+<li>mult 指令的实现，需要后面再实现。</li>
+<li>j 指令需要立刻跳转，但是我的好像是下一个周期跳转，可能存在仿真没检查出来的问题。</li>
+<li>sll&#x2F;srl&#x2F;sra 指令的实现，选择添加一个位移器的数据通路。</li>
+</ol>
+<h2 id="2025-02-22"><a href="#2025-02-22" class="headerlink" title="2025-02-22"></a>2025-02-22</h2><h3 id="上午-2"><a href="#上午-2" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>将下降沿读 ram 更改为以 next_pc 为指令 ram 的读地址，这样指令 ram 的输出是在指令位于 IF 阶段时完成的。此时在讲 j 指令判断提前，这样可以解决 j 指令立刻跳转的问题。数据 ram 同理。</li>
+</ol>
+<h3 id="下午-2"><a href="#下午-2" class="headerlink" title="下午"></a>下午</h3><ul>
+<li><p>已经解决的问题：</p>
+<ol>
+<li>beq 类指令的实现。增加一个 BranchJug 模块，用于判断具体是哪一类的 beq 指令。使用一个二选一多路选择器，PC+4 与 PC+4+i 选择器，选择器的选择信号由 BranchJug 模块输出。</li>
+<li>jal 类指令的实现。使用一个三选一多路选择器，在 branch 二选一多路选择器的基础上，选择 BranchPC, PC+4+imm&lt;&lt;2, rs，号由 j 类指令的控制信号输出。在 AluAE 信号之前添加一个三选一多路选择器，选择 PC+4, sa, 前递后的 rd1，选择信号是 alusr 在 AluBE 信号之前添加一个三选一多路选择器，选择 4, signlmm, 前递后的 rd2，选择信号是 alusrcb。</li>
+<li>位移指令的实现。最后选择将其放在 alu 模块中实现。</li>
+<li>逻辑运算与算术运算指令的实现。这部分好实现，只需修改 controller 模块的控制信号与添加 alu 中的计算部分即可。</li>
+</ol>
+</li>
+<li><p>需要解决的问题：</p>
+<ol>
+<li>lb，sb 指令的实现，需要添加一个扩位器，将 8 位扩展为 32 位。</li>
+<li>mult 指令的实现，需要添加一个乘法器，将两个 32 位数相乘，得到 64 位数，将 64 位数的高 32 位存入 hi 寄存器，低 32 位存入 lo 寄存器。</li>
+<li>hazard 模块没有修改，需要添加对于 j 类指令的控制冒险处理。</li>
+<li>修改 cpu 流程图，有很多地方属于最开始的不成熟想法，与实际代码不符。</li>
+<li>学会使用 trace，将其与波形图结合，可以更好的调试代码。</li>
+</ol>
+</li>
+</ul>
+<p><img src="/36191/cpu3.png" alt="cpu"></p>
+<h3 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h3><p>为了使用 trace，我需要下载 linux 系统，这里我借鉴了<a target="_blank" rel="noopener" href="https://blog.musnow.top/posts/3613882502/index.html">【Linux】wsl2 安装 ubuntu 并移动安装位置</a>，成功下载了 wsl2。</p>
+<h2 id="2025-02-23"><a href="#2025-02-23" class="headerlink" title="2025-02-23"></a>2025-02-23</h2><h3 id="上午-3"><a href="#上午-3" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>成功找到了 CPU-CDE 环境，并配置好了 mipsel-linux-gcc 编译器，可以使用 trace 进行调试。准备将指令补全，然后进行测试。</li>
+<li>发现我并没有注意到指令集中有零扩展与符号扩展，我需要添加一个选择扩展方式的信号。controller 模块中添加一个扩展方式选择信号，inst_andi || inst_ori || inst_xori 时选择 0 扩展，其余时选择符号扩展。</li>
+<li>发现 cpu 没有在 mem 阶段将访存数据前递，而是选择在 wb 阶段前递，这样会加一个周期的延迟。不知道这样的设计是否合理，需要进一步考虑。</li>
+<li>添加 lb 指令，在 mem 阶段，访存后加入一个二选一多路选择器，一个是 readdata，一个是 readdata 的低 8 位扩展为 32 位，选择信号是 lb。但是需要考虑 ram 是否支持字节对齐。 5.添加 sb 指令，在 mem 阶段，访存前加入一个二选一多路选择器，一个是 4{WriteDataM[7:0]}, 一个是 WriteDataM，选择信号是 sb。再添加一个字节写使能信号，用于控制写入的字节。</li>
+</ol>
+<h2 id="2025-02-24"><a href="#2025-02-24" class="headerlink" title="2025-02-24"></a>2025-02-24</h2><h3 id="上午-4"><a href="#上午-4" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>解决了 jal 类指令的控制冒险问题，直接在 stall 信号中添加一个 jal 类指令的判断，如果是 j 类指令，直接 stall，这样可以解决 jal 类指令的控制冒险问题。</li>
+<li>我需要添加一个 idea pool，用于存放我想要写的内容，以帮助我更好的产出高质量文章。可以直接在 draft 文件夹中新建一个’idea.md’文件，用于存放我的想法。</li>
+</ol>
+<h2 id="2025-02-27"><a href="#2025-02-27" class="headerlink" title="2025-02-27"></a>2025-02-27</h2><h3 id="下午-3"><a href="#下午-3" class="headerlink" title="下午"></a>下午</h3><p>最近很久没更新了，主要原因是使用 trace 调试的时候，gettrace 跑出来的波形图信号是 XXX，不知道是什么原因，导致我无法调试。所以现在我决定自己写一个测试程序。</p>
+<h2 id="2025-02-28"><a href="#2025-02-28" class="headerlink" title="2025-02-28"></a>2025-02-28</h2><h3 id="下午-4"><a href="#下午-4" class="headerlink" title="下午"></a>下午</h3><p>还是使用之前的验证程序，成功运行。<br>我大意了，没有闪。gettrace 需要点击一下 run all 按钮才能运行。这个小问题白白浪费了我几天时间，难受住。</p>
+<p>目前没有搞懂 pre-IF 阶段的作用，我需要进一步了解这个阶段。</p>
+<h2 id="2025-03-01"><a href="#2025-03-01" class="headerlink" title="2025-03-01"></a>2025-03-01</h2><h3 id="上午-5"><a href="#上午-5" class="headerlink" title="上午"></a>上午</h3><p>使用 trace 调试，需要重写顶层模块的输入输出，将其与 trace 的输入输出对应起来。借此我准备重构我的 cpu 代码，将其更加规范化。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    subgraph mycpu[我的CPU架构]</span><br><span class="line">        subgraph hazard[冒险检测单元]</span><br><span class="line">            H1[数据冒险] --&gt; H2[控制冒险]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        subgraph datapath[数据通路]</span><br><span class="line">            IF[IF取指令] --&gt; ID[ID指令译码]</span><br><span class="line">            ID --&gt; EX[EX执行]</span><br><span class="line">            EX --&gt; MEM[MEM访存]</span><br><span class="line">            MEM --&gt; WB[WB写回]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        subgraph controller[控制器]</span><br><span class="line">            C1[主控制器] --&gt; C2[ALU控制器]</span><br><span class="line">            C3[分支控制] --&gt; C4[跳转控制]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        hazard ---&gt; datapath</span><br><span class="line">        controller ---&gt; datapath</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+
+<h3 id="下午-5"><a href="#下午-5" class="headerlink" title="下午"></a>下午</h3><ol>
+<li>重构了 cpu 代码，我还需要完善我的 cpu 架构图，将其与代码对应起来。</li>
+<li>我的代码中，各个模块接口与变量的命名不够规范，这是因为我自己的想法与 AI 的自动补全不同，我需要进一步规范化我的代码。</li>
+<li>想要跑通 trace，我还有几条指令没有实现（lui subu sltu slti sltiu div divu multu mfhi mflo mthi mtlo），虽然这些指令不是龙芯杯要求的，但是我还是可以实现一下，以便更好的调试。</li>
+<li>在 lab6 测试完后，我需要将我的代码上传到 github 上，一个 test 分支用于测试，一个 for nscscc 分支用于提交。 再添加一个 for os 分支，用于实现操作系统。</li>
+<li>我应该将数据 ram 的读取信号放到 EX 阶段，读出来的数据放在 MEM 阶段，类似于指令 ram。</li>
+</ol>
+<h2 id="2025-03-03"><a href="#2025-03-03" class="headerlink" title="2025-03-03"></a>2025-03-03</h2><h3 id="上午-6"><a href="#上午-6" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>龙芯的每个测试集相互之间是有依赖的，这是一个坏消息。</li>
+</ol>
+<h3 id="下午-6"><a href="#下午-6" class="headerlink" title="下午"></a>下午</h3><ol>
+<li>配置好了官方提供的测试环境，但是测试指令集还是要自己写，令人头疼。</li>
+<li>我将我的代码上传到了 github 上，更方便我进行版本管理。</li>
+</ol>
+<h2 id="2025-03-04"><a href="#2025-03-04" class="headerlink" title="2025-03-04"></a>2025-03-04</h2><h3 id="上午-7"><a href="#上午-7" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>使用官方代码测试（<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bunny9__/article/details/118157087">CPU 设计实战 lab3—任务 1 简单 CPU 参考设计调试</a>），可以通过。测试集的跳过，是自己的代码有问题。但是我仍然无法找到问题所在，这是一个坏消息。</li>
+</ol>
+<h2 id="2025-03-11"><a href="#2025-03-11" class="headerlink" title="2025-03-11"></a>2025-03-11</h2><h3 id="上午-8"><a href="#上午-8" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>花了一周时间，基于官方代码，将我的代码进行了重构。现在已经通过了 lab7 测试集。接下来我将一步一步继续完成《CPU 设计实战》的所有任务。直到可以在我的 cpu 上运行操作系统。</li>
+<li>了解到有 <code>一生一心</code> 和 <code>rCore</code> 两个公开课程，这正好符合了我想要实现 cpu 与操作系统的需求。后续我将持续关注，看能不能参与进去。</li>
+<li>想要实现基于 booth2 与 华莱树 的乘法器，但是我没有找到好的调试手段，找不到代码的错误所在，于是决定暂且放下。</li>
+<li>需要使用 ip 实现有符号与无符号的 32 位除法。</li>
+<li>预计这周出一个 verilog 的入门教程，毕竟我的网站文章还是太少了。</li>
+<li>代码重构后，需要画出新的 cpu 架构图，希望能再网上找到别人的 cpu 架构图，以便参考。</li>
+</ol>
+<h2 id="2025-03-13"><a href="#2025-03-13" class="headerlink" title="2025-03-13"></a>2025-03-13</h2><h3 id="上午-9"><a href="#上午-9" class="headerlink" title="上午"></a>上午</h3><p>例外处理初步实现，仍需通过测试。</p>
+<h2 id="2025-03-15"><a href="#2025-03-15" class="headerlink" title="2025-03-15"></a>2025-03-15</h2><h3 id="上午-10"><a href="#上午-10" class="headerlink" title="上午"></a>上午</h3><ol>
+<li>发现 cpu 设计实战 179 页对于 BadVAddr 的的写入条件有误，应该为：</li>
+</ol>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (wb_ex &amp;&amp; (wb_excode == `EXC_AdEL || wb_excode == `EXC_AdES))</span><br><span class="line">    BadVAddr &lt;= wb_exaddr;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>通过 lab8、lab9 测试集后，我才发现我应该直接添加 uart 模块，因为龙芯杯不需要要实现例外处理。</p>
+</li>
+<li><p>基于 booth2 与华莱树的乘法器还没有通过测试，我需要进一步调试。</p>
+</li>
+</ol>
+<h2 id="2025-04-07"><a href="#2025-04-07" class="headerlink" title="2025-04-07"></a>2025-04-07</h2><h3 id="下午-7"><a href="#下午-7" class="headerlink" title="下午"></a>下午</h3><ol>
+<li>龙芯杯的 sram 是异步 sram,不依赖时钟信号、不需要时钟周期。</li>
+<li>目前代码的关键路径是: EXE 与 MEM 阶段的数据信号前递到 ID 阶段,这些数据又会影响到跳转信号的生成,最终前递到 IF 阶段。这形成了一个横跨三个阶段的路径。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    EXE[EXE 阶段数据]</span><br><span class="line">    MEM[MEM 阶段数据]</span><br><span class="line">    ID[ID 阶段译码]</span><br><span class="line">    Jump[跳转信号生成]</span><br><span class="line">    IF[IF 阶段取指]</span><br><span class="line"></span><br><span class="line">    EXE --&gt;|前递| ID</span><br><span class="line">    MEM --&gt;|前递| ID</span><br><span class="line">    ID --&gt; Jump</span><br><span class="line">    Jump --&gt; IF</span><br></pre></td></tr></table></figure>
+
+<p>目前考虑加深流水线深度，将 ID 阶段拆分为 PreID 与 ID 阶段。</p>
+<pre><code>- PreID 阶段用于指令译码，处理前递数据
+- ID 阶段用于处理控制信号与跳转信号
+</code></pre>
+<ol start="3">
+<li>对于外设既 uart 访问的仿真还未完成，主要是因为我没有找到好的测试方法。</li>
+<li>对于 mul 模块的流水线深化,还需检测其合理性。</li>
+<li>对于 uart 模块的实现我还需进一步了解其实现原理。</li>
+</ol>
+<h3 id="晚上-1"><a href="#晚上-1" class="headerlink" title="晚上"></a>晚上</h3><ol>
+<li>cpu 优化方向 IPC 与 频率</li>
+</ol>
+<ul>
+<li>IPC<ul>
+<li>增加 ICache 与 DCache 减少访存延迟</li>
+<li>增加分支预测器，减少分支延迟</li>
+<li>超标量设计, 增加指令级并行度</li>
+<li>前后端使用 IFIO 连接</li>
+</ul>
+</li>
+<li>频率<ul>
+<li>减少关键路径长度与逻辑深度</li>
+<li>vivado 的时序分析工具与时许约束</li>
+<li>总线控制优化,sram 只支持 60MHz</li>
+</ul>
+</li>
+</ul>
+<h2 id="2025-04-09"><a href="#2025-04-09" class="headerlink" title="2025-04-09"></a>2025-04-09</h2><h3 id="上午-11"><a href="#上午-11" class="headerlink" title="上午"></a>上午</h3><p>使用时序优先策略 WNS 为 0.364<br>使用 netdelay 优先策略 WNS 为 0.290</p>
+<p>经检验 wkmips 的最高频率为 120MHz，接下为了适应 sram 60MHz 的频率，我需要添加一个两周期访存与 icache。</p>
+<h3 id="下午-8"><a href="#下午-8" class="headerlink" title="下午"></a>下午</h3><p>发现 cpu 之前的设计就是两周期访存。那似乎不需要添加 icache 了</p>
+<h3 id="晚上-2"><a href="#晚上-2" class="headerlink" title="晚上"></a>晚上</h3><h4 id="以下为单发射初步设计思路，并不一定正确"><a href="#以下为单发射初步设计思路，并不一定正确" class="headerlink" title="以下为单发射初步设计思路，并不一定正确"></a>以下为单发射初步设计思路，并不一定正确</h4><ol>
+<li>选择横跨两个阶段访存，增大了关键路径。频率最高为 76MHz</li>
+<li>阻塞两周期访存，频率最高为 120MHz<ul>
+<li>需要增加 icache 与 data 阻塞两周期访存</li>
+</ul>
+</li>
+<li>在此基础上选择将关键路径 EXE 的计算结果，保存到 MEM 阶段的寄存器中，在前递给 ID 阶段，用于跳转。可以再次增加频率，但是会导致跳转指令与上一条指令发生数据冲突时多延迟一周期。可能需要使用 lru 分支预测器，来解决这个问题。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://reed244.github.io/2025/01/14/%E8%AF%BB%E4%B8%AD%E8%A5%BF%E5%8D%B0%E5%93%B2%E5%AD%A6%E6%97%A5%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Reed">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Reed's Blog">
+      <meta itemprop="description" content="爱空想，爱技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Reed's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/14/%E8%AF%BB%E4%B8%AD%E8%A5%BF%E5%8D%B0%E5%93%B2%E5%AD%A6%E6%97%A5%E8%AE%B0/" class="post-title-link" itemprop="url">读中西印哲学日记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-14 20:05:00" itemprop="dateCreated datePublished" datetime="2025-01-14T20:05:00+08:00">2025-01-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-09 17:32:49" itemprop="dateModified" datetime="2025-12-09T17:32:49+08:00">2025-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="2025-年-1-月-14-日"><a href="#2025-年-1-月-14-日" class="headerlink" title="2025 年 1 月 14 日"></a>2025 年 1 月 14 日</h2><p>受 B 站网友推荐，我开始阅读《中西印哲学史》。希望能从此获得系统性的哲学知识，以满足我对哲学的好奇心。目前看完了第一章，对张祥龙老师的观点：搞哲学就是对边缘性问题做合理探讨的思考和学问深以为然。哲学的研究就是为了解决那些答案不明确的问题，如生命的意义、自由意志等。我并不期望我能找到这些难题的答案，只求能站在前人的肩膀上，看到他们的思考。</p>
+<hr>
+<h2 id="2025-年-1-月-15-日"><a href="#2025-年-1-月-15-日" class="headerlink" title="2025 年 1 月 15 日"></a>2025 年 1 月 15 日</h2><p>哲学是对终极问题的思考，而思考的载体是语言，所以不同语言特质的民族会发展出不相同的哲学体系。西方语言属于屈折语(inflecting language)，其特点是通过单词本身的形式变化来表达语法功能。而汉语属于孤立语(isolating language)，其特点是通过单词的位置和语序来表达语法功能。只要抓住了语法规则与单词实体，就能抓住万变的语言现象。规则与实体便成为了比表象更加重要的知识。这种形式上一对多的语言特质，使得西方哲学家更加注重逻辑推理，以求得出一个普适的规律。这是一合理的解释。还存在第三种语言黏着语(agglutinating language)，它的特点是通过词缀来表达语法功能。那是什么导致语言的多样性？难道是纯粹的巧合么。</p>
+<hr>
+<h2 id="2025-年-1-月-17-日"><a href="#2025-年-1-月-17-日" class="headerlink" title="2025 年 1 月 17 日"></a>2025 年 1 月 17 日</h2><p>对于原理的追求，来自于西方哲学家对于真实感的追寻，希望找到绝对不变的东西，来打破生命中的虚幻感（死亡导致的？）。这种对于原理的追求，将他们导向了柏拉图的二元论，既世界是由真实的的理念世界和被理念统治的现实世界构成。其中理念世界是绝对不变的，而现实世界是多变的。现实生活中的三角形有无数多个，但他们都分享了理念世界中的三角形的属性。张祥龙老师具体列举了毕达哥拉斯，巴门尼德和芝诺的终极实在观。毕达哥拉斯强调万物皆数。巴门尼德沿着毕达哥拉斯的思路，将处于中心位置的数换为了逻辑推理（？）。这个过程中巴门尼德的终极是在更加贴近人类的自然语言，更为人们接受。芝诺通过四个运动悖论，证明运动的虚幻性，从而支持他老师巴门尼德的绝对不变的观点。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://reed244.github.io/2025/01/10/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Reed">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Reed's Blog">
+      <meta itemprop="description" content="爱空想，爱技术">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Reed's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/10/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/" class="post-title-link" itemprop="url">博客搭建日记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-10 20:05:00" itemprop="dateCreated datePublished" datetime="2025-01-10T20:05:00+08:00">2025-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-12-09 17:32:49" itemprop="dateModified" datetime="2025-12-09T17:32:49+08:00">2025-12-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="2025-1-10"><a href="#2025-1-10" class="headerlink" title="2025-1-10"></a>2025-1-10</h2><p>今天是 2025 年 1 月 10 日，我决定开始搭建自己的博客，记录一下搭建过程。目前遇到的主要问题有两个:</p>
+<ol>
+<li>网站无法插入本地图片，没有检查出来是什么问题，这样的话我的博客就没有视觉效果了。</li>
+<li>对于要呈现一个怎样的风格，我还没有明确的想法。需要先将图片插入后，再进行风格的调整。</li>
+</ol>
+<p>目前就这么多先看比赛去了。</p>
+<hr>
+<h2 id="2025-1-11"><a href="#2025-1-11" class="headerlink" title="2025-1-11"></a>2025-1-11</h2><p>今天是 2025 年 1 月 11 日，我继续搭建我的博客，目前解决了头像与 top 图片无法插入的问题。将 butterfly 的配置文件从根目录中移回到主题目录下，问题解决。但是这样的话每次版本更新都需要重新配置，所以这个做法并不优雅，我需要找到更好的解决方案。</p>
+<hr>
+<h2 id="2025-1-12"><a href="#2025-1-12" class="headerlink" title="2025-1-12"></a>2025-1-12</h2><p>今天是 2025 年 1 月 12 日，我解决了导航栏无法显示的问题，错误之处让我哭笑不得。原来是导航项需要空一个 tap 的距离，这样才能显示出来。具体如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="string">时间轴:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-folder-open</span></span><br><span class="line">  <span class="string">清单||fa</span> <span class="attr">fa-heartbeat:</span></span><br><span class="line">    <span class="string">音乐:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">    <span class="string">照片:</span> <span class="string">/Gallery/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-images</span></span><br><span class="line">    <span class="string">电影:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line">    <span class="string">友链:</span> <span class="string">/link/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-link</span></span><br><span class="line">    <span class="string">关于:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-heart</span></span><br></pre></td></tr></table></figure>
+
+<p>之后我将选择博客背景并添加搜索功能。<br>选择背景图片与 top_img 相同，这样可以保持风格的统一。具体方法可以参考 <a target="_blank" rel="noopener" href="https://blog.captainz.cc/posts/hexo_butterfly_top_img.html">Hexo+Butterfly 主题一图流背景与顶部图修改</a><br>成功添加搜索功能，具体方法可以参考 <a target="_blank" rel="noopener" href="https://blog.ccknbc.cc/posts/hexo-butterfly-algolia/">Hexo Butterfly Algolia 搜索的使用</a></p>
+<p>博客的基本功能已经完成，接下来的要添加的的是评论功能与让自己写的文章被浏览器收录。</p>
+<hr>
+<h2 id="2025-1-13"><a href="#2025-1-13" class="headerlink" title="2025-1-13"></a>2025-1-13</h2><p>今天是 2025 年 1 月 13 日，我添加了 Giscus 评论功能，具体方法可以参考 <a target="_blank" rel="noopener" href="https://blog.qiusyan.top/posts/61913.html">给你的 Hexo-Butterfly 添加 Giscus 评论系统</a>。成功让文章被 bing 收录，具体方法可以参考 <a target="_blank" rel="noopener" href="https://moonshuo.cn/posts/6356.html">Hexo 中 Buttefly 被百度，Bing 等搜索引擎收录</a>。流程是跑完了，但是还得等几天看看效果。</p>
+<hr>
+<h2 id="2025-1-14"><a href="#2025-1-14" class="headerlink" title="2025-1-14"></a>2025-1-14</h2><p>今天是 2025 年 1 月 14 日，为我的网站添加 katex 数学公式支持。<br>$$Orzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz$$<br>$\frak{Hello}$、$\frak{114514}$<br>具体方法可以参考 <a target="_blank" rel="noopener" href="https://nickxu.me/2022/04/17/Hexo-Butterfly-%E5%BB%BA%E7%AB%99%E6%8C%87%E5%8D%97%EF%BC%88%E5%85%AB%EF%BC%89%E4%BD%BF%E7%94%A8-KaTeX-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo + Butterfly 建站指南（八）使用 KaTeX 数学公式</a></p>
+<p>已经搞明白了 hexo 新建页面与新建文章的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment"># 用于生成静态文件（将 Markdown 文件、主题和配置转换为 HTML、CSS、JavaScript 等静态文件。），到 public 文件夹下，是一些 html 文件</span></span><br><span class="line">hexo s <span class="comment"># 用于本地预览生成的静态文件</span></span><br><span class="line">hexo d <span class="comment"># 用于将静态文件部署到远程仓库。</span></span><br><span class="line">hexo new [layout] &lt;title&gt; <span class="comment"># 根据 scaffolds 中的布局新建。layout 可以省略，默认为 post</span></span><br><span class="line">hexo cl <span class="comment"># 清除缓存文件 (db.json) 和已生成的静态文件 (public)。</span></span><br></pre></td></tr></table></figure>
+
+<p>万事俱备，只欠东风。现在我大概是两个方向：</p>
+<ol>
+<li>完善与优化博客的视觉效果，让它看起来更加美观。</li>
+<li>开始写文章，记录自己的学习与生活。</li>
+</ol>
+<hr>
+<h2 id="2025-1-15"><a href="#2025-1-15" class="headerlink" title="2025-1-15"></a>2025-1-15</h2><p>借鉴<a target="_blank" rel="noopener" href="https://fe32.top/">唐志远</a>大佬的博客，一个统一的颜色可以让博客看起来更加和谐、美观。基于灰色基调的背景图，我选择使用紫色作为主题色。将 theme&#x2F;_config.yml 中的<code>theme_color</code>里的大部分属性改为紫色。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &quot;#8A2BE2&quot; 是紫色</span></span><br><span class="line"><span class="attr">theme_color:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">paginator:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">button_hover:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">text_selection:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">link_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">meta_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">hr_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">code_foreground:</span> <span class="string">&quot;#F47466&quot;</span></span><br><span class="line">  <span class="attr">code_background:</span> <span class="string">&quot;rgba(27, 31, 35, .05)&quot;</span></span><br><span class="line">  <span class="attr">toc_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">blockquote_padding_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">blockquote_background_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">scrollbar_color:</span> <span class="string">&quot;#8A2BE2&quot;</span></span><br><span class="line">  <span class="attr">meta_theme_color_light:</span> <span class="string">&quot;ffffff&quot;</span></span><br><span class="line">  <span class="attr">meta_theme_color_dark:</span> <span class="string">&quot;#0d0d0d&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其次，增加卡片边框在鼠标悬停时变色的效果。修改<code>[blogRoot]\themes\butterfly\source\css\_global\function.styl</code>的 cardHover 部分。</p>
+<figure class="highlight styl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// card hover</span></span><br><span class="line"><span class="selector-class">.cardHover</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--card-bg)</span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="built_in">var</span>(--card-box-shadow)</span><br><span class="line">  <span class="attribute">transition</span>: all .<span class="number">3s</span></span><br><span class="line">  <span class="built_in">addBorderRadius</span>(<span class="number">8</span>)</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1.5px</span> solid transparent //add</span><br><span class="line"></span><br><span class="line">  <span class="selector-pseudo">&amp;:hover</span></span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="built_in">var</span>(--card-hover-box-shadow)</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1.5px</span> solid <span class="number">#8A2BE2</span> //add</span><br></pre></td></tr></table></figure>
+
+<p>注意只增加<code>hover border</code>时，悬停后卡片会有一个<code>border</code>的位移，导致卡片布局发生变化，所以需要在<code>.cardHover</code>中增加一个同样大小的透明边框。</p>
+<p>可能是我选择的背景图内容太多，且图片比例失衡，导致博客的视觉效果不是很好。我需要修改图片比例，或是重新选择一张背景图，甚至考虑使用纯色背景，</p>
+<p>添加了全局 aplayer 吸底播放器，但是没搞懂原理，不知道怎么添加自己想听的音乐。</p>
+<hr>
+<h2 id="2025-1-16"><a href="#2025-1-16" class="headerlink" title="2025-1-16"></a>2025-1-16</h2><p>成功解决背景图比例失衡问题，且将主题颜色换为深蓝色。现在的博客看起来更加和谐、美观。<br>aplayer 可以通过修改 data_id 的方式来添加自己想听的音乐，具体方法可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46590483/article/details/120799380">使用插件 aplayer 和 MeingJS 在 hexo 文章内添加音乐</a>。且发现自己常用的酷狗极其不好用，只能将音源更换为网易云了。但是网易云居然只有在播客中听<code>ti intro</code>，而播客又不能与正常音乐一起分享，这就很尴尬了。哎，dead game。</p>
+<hr>
+<h2 id="2025-1-17"><a href="#2025-1-17" class="headerlink" title="2025-1-17"></a>2025-1-17</h2><p>播客看起来已经很不错了，接下来我想修改一下博客的加载页，最好是使用自己的头像。具体方法可以参考<a target="_blank" rel="noopener" href="https://happyleecode.github.io/post/butterfly-loading/#1butterfly%E4%B8%BB%E9%A2%98%E8%87%AA%E5%B8%A6%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E5%8A%A8%E7%94%BB-preloader">一款基于 Butterfly 主题的 loading 动画</a>。<br>我想要一个静态的头像，不要有旋转的效果。具体方法可以参考<a target="_blank" rel="noopener" href="https://zhang-blogs.cn/2024/08/05/12-Hexo-Butterfly%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B%E4%B8%80/">Hexo-butterfly 魔改教程(一) 0x02 头像不旋转</a>。</p>
+<p>今天像往常一样<code>hexo d</code>，但是去爆出了一个错误…</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (D:\Program Files\Code\个人网站\hexo\node_modules\hexo-deployer-git\node_modules\hexo-util\lib\spawn.js:51:21)</span><br><span class="line">    at ChildProcess.emit (node:events:524:28)</span><br><span class="line">    at cp.emit (D:\Program Files\Code\个人网站\hexo\node_modules\cross-spawn\lib\enoent.js:34:29)</span><br><span class="line">    at ChildProcess._handle.onexit (node:internal/child_process:293:12)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里参考了<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41287260/article/details/124368189">Git 问题：解决“ssh:connect to host github.com port 22: Connection timed out”</a>,抛弃 ssh 连接方式，使用 http 连接。问题转变为了…</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access <span class="string">&#x27;https://github.com/reed244/reed244.github.io.git/&#x27;</span>: Failed to connect to github.com port 443 after 21141 ms: Timed out</span><br></pre></td></tr></table></figure>
+
+<p>又找到另一篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/636418854">解决 Github port 443 : Timed out</a>。成功解决</p>
+<p>接下来我需要学习魔改博客的方法，为我的博客添加一些独特的功能与个性化的页面。</p>
+<hr>
+<h2 id="2025-1-18"><a href="#2025-1-18" class="headerlink" title="2025-1-18"></a>2025-1-18</h2><p>网上查到了一些资料，搞懂了 <code>hexo</code> 生成静态网页的流程与原理，这里可以参考<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903490930622471#heading-17">浅析 Hexo 搭建博客的原理</a>。由于 butterfly 主题是基于 <code>pug</code> 与 <code>stylus</code> 的，所以我需要学习一下这两种语言的基本语法。</p>
+<p>刚刚又发现了一个非常有意思的<a target="_blank" rel="noopener" href="https://aidn.jp/mikutap/">网站</a>。这个网站是一个音乐节奏游戏，你可以通过键盘上的按键来发出不同的声音，同时屏幕上会有不同的动画效果。可以的话我想在我的博客中添加这样一个小游戏，最好可以让用户自己选择背景音乐与动画效果。</p>
+<p>借鉴<a target="_blank" rel="noopener" href="https://blog.leonus.cn/2022/butterflyTag.html">作品推荐卡片—标签外挂</a>,在我的博客中添加一个作品推荐卡片，可以让我推荐一些我喜欢的作品，如书籍、电影、音乐等。具体参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标题</td>
+<td>作品的名字</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>作品的详情页，填写后会显示查看详情按钮</td>
+<td>无</td>
+</tr>
+<tr>
+<td>背景</td>
+<td>背景图片 Url（必须是图片，想要实现颜色可自行更改代码）</td>
+<td>纯色 #333</td>
+</tr>
+<tr>
+<td>评分</td>
+<td>范围 0-5，可以是小数，如 3.5 和 3.1 表示三星半，图标只有半星的）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>评价</td>
+<td>点评内容</td>
+<td>此作品博主暂未作出评价</td>
+</tr>
+<tr>
+<td>图标</td>
+<td>左上角图标，请填写 fontawesome 图标</td>
+<td>无</td>
+</tr>
+<tr>
+<td>标签</td>
+<td>右上角标签</td>
+<td>无</td>
+</tr>
+<tr>
+<td>宽度</td>
+<td>卡片宽度，需要填单位，如：100px 或 10rem</td>
+<td>220px</td>
+</tr>
+<tr>
+<td>高度</td>
+<td>卡片高度，要求同上</td>
+<td>300px</td>
+</tr>
+</tbody></table>
+<p>单纯的卡片效果并不好，因为无法多个卡片并排，与分类。碰巧在大佬的博客中又发现一篇文章<a target="_blank" rel="noopener" href="https://blog.leonus.cn/2023/collectPage.html">藏宝阁页面的实现</a>。按照文中的思路，再添加评价信息，使得卡片更加丰富。大佬的博客还挺好看的，我需要继续熟悉如何修改页面样式。</p>
+<hr>
+<h2 id="2025-1-19"><a href="#2025-1-19" class="headerlink" title="2025-1-19"></a>2025-1-19</h2><p>由于收藏中图片变多，我担心网站会变得卡顿，所以我选择使用 cdn 加速。使用饿了么的 cdn 后发现有些 icon 显示不出来了，具体原因也没有发现，所以还是选择回退。</p>
+<hr>
+<h2 id="2025-1-20"><a href="#2025-1-20" class="headerlink" title="2025-1-20"></a>2025-1-20</h2><p>终于将所有的收藏卡片图片都添加完了。还有很多看过的小说与动漫没有添加，这个下次再慢慢想吧。</p>
+<h2 id="2025-3-2"><a href="#2025-3-2" class="headerlink" title="2025-3-2"></a>2025-3-2</h2><p>发现每次新建文章都需要手动 hexo algolia，这样很不方便。所以我需要找到一个自动化的方法，让 algolia 自动更新。<a target="_blank" rel="noopener" href="https://www.mebi.me/hexo-with-algolia#6-%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E8%AE%B0%E5%BD%95">hexo 博客使用 algolia 搜索</a>这篇文章介绍了两种自动化的方法。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Reed</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
