@@ -634,9 +634,9 @@
 <p>当创建 iprom 时，若我不勾选 generate address interface with 32 bits 会导致输入地址与取出的指令不一致，这也是一个问题。</p>
 <p>问题一是由于 ip 核读取时，至少会晚一个周期。所以本该被延迟的信号的下一个信号会被延迟，导致本该被延迟信号的消失。</p>
 <h3 id="下午-1"><a href="#下午-1" class="headerlink" title="下午"></a>下午</h3><p>目前成功将所有问题解决。当令 ip 核 clk 下降沿触发时，可以解决晚一个周期的问题。regfile 写入下降沿触发时为了避开上升沿写入，这样的话数据冒险可以少考虑一个周期。但是 iprom 的问题还是不能理解。</p>
-<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/36191/mips_instr.png" alt="指令"></p>
+<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/.io//mips_instr.png" alt="指令"></p>
 <p>算术指令，逻辑运算指令，变量位移指令（sllv, srlv, srav）,访存指令都可以复用 alu，只需要修改 alu 的控制信号即可。</p>
-<p><img src="/36191/cpu1.png" alt="cpu"><br><img src="/36191/cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
+<p><img src="/.io//cpu1.png" alt="cpu"><br><img src="/.io//cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
 <h2 id="2025-02-21"><a href="#2025-02-21" class="headerlink" title="2025-02-21"></a>2025-02-21</h2><ol>
 <li>更改 controller 与 alu 模块，使其可以支持所有指令。其中 controller 模块的控制信号生成部分没有完成，且更改部分还没有经过检测。</li>
 <li>为了便于以后更改 cpu 框架，画出了 cpu 的框架图。</li>
@@ -667,7 +667,7 @@
 </ol>
 </li>
 </ul>
-<p><img src="/36191/cpu3.png" alt="cpu"></p>
+<p><img src="/.io//cpu3.png" alt="cpu"></p>
 <h3 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h3><p>为了使用 trace，我需要下载 linux 系统，这里我借鉴了<a target="_blank" rel="noopener" href="https://blog.musnow.top/posts/3613882502/index.html">【Linux】wsl2 安装 ubuntu 并移动安装位置</a>，成功下载了 wsl2。</p>
 <h2 id="2025-02-23"><a href="#2025-02-23" class="headerlink" title="2025-02-23"></a>2025-02-23</h2><h3 id="上午-3"><a href="#上午-3" class="headerlink" title="上午"></a>上午</h3><ol>
 <li>成功找到了 CPU-CDE 环境，并配置好了 mipsel-linux-gcc 编译器，可以使用 trace 进行调试。准备将指令补全，然后进行测试。</li>

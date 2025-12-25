@@ -26,17 +26,17 @@
 <meta property="og:site_name" content="Reed&#39;s Blog">
 <meta property="og:description" content="这篇文章用于记录我备战龙芯被的过程，以及比赛的一些心得体会。 借鉴资料：  《CPU 设计实战》 计算机体系结构研讨课 2020 秋季 UCAS 《CPU 设计实战》 工程环境及 RTL 代码合集 《计算机体系结构基础》 重庆大学计算机组成原理实验与参考实现  2025-02-17通过仔细对照信号波形图，我发现了三个问题：  有些信号名称写错了，导致了后续的错误； alu 与 controller">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://reed244.github.io/36191/mips_instr.png">
-<meta property="og:image" content="https://reed244.github.io/36191/cpu1.png">
-<meta property="og:image" content="https://reed244.github.io/36191/cpu2.png">
-<meta property="og:image" content="https://reed244.github.io/36191/cpu3.png">
+<meta property="og:image" content="https://reed244.github.io/.io//mips_instr.png">
+<meta property="og:image" content="https://reed244.github.io/.io//cpu1.png">
+<meta property="og:image" content="https://reed244.github.io/.io//cpu2.png">
+<meta property="og:image" content="https://reed244.github.io/.io//cpu3.png">
 <meta property="article:published_time" content="2025-02-16T16:00:00.000Z">
 <meta property="article:modified_time" content="2025-03-10T16:00:00.000Z">
 <meta property="article:author" content="Reed">
 <meta property="article:tag" content="日记">
 <meta property="article:tag" content="龙芯杯">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://reed244.github.io/36191/mips_instr.png">
+<meta name="twitter:image" content="https://reed244.github.io/.io//mips_instr.png">
 
 
 <link rel="canonical" href="https://reed244.github.io/2025/02/17/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/">
@@ -272,9 +272,9 @@
 <p>当创建 iprom 时，若我不勾选 generate address interface with 32 bits 会导致输入地址与取出的指令不一致，这也是一个问题。</p>
 <p>问题一是由于 ip 核读取时，至少会晚一个周期。所以本该被延迟的信号的下一个信号会被延迟，导致本该被延迟信号的消失。</p>
 <h3 id="下午-1"><a href="#下午-1" class="headerlink" title="下午"></a>下午</h3><p>目前成功将所有问题解决。当令 ip 核 clk 下降沿触发时，可以解决晚一个周期的问题。regfile 写入下降沿触发时为了避开上升沿写入，这样的话数据冒险可以少考虑一个周期。但是 iprom 的问题还是不能理解。</p>
-<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/36191/mips_instr.png" alt="指令"></p>
+<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/.io//mips_instr.png" alt="指令"></p>
 <p>算术指令，逻辑运算指令，变量位移指令（sllv, srlv, srav）,访存指令都可以复用 alu，只需要修改 alu 的控制信号即可。</p>
-<p><img src="/36191/cpu1.png" alt="cpu"><br><img src="/36191/cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
+<p><img src="/.io//cpu1.png" alt="cpu"><br><img src="/.io//cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
 <h2 id="2025-02-21"><a href="#2025-02-21" class="headerlink" title="2025-02-21"></a>2025-02-21</h2><ol>
 <li>更改 controller 与 alu 模块，使其可以支持所有指令。其中 controller 模块的控制信号生成部分没有完成，且更改部分还没有经过检测。</li>
 <li>为了便于以后更改 cpu 框架，画出了 cpu 的框架图。</li>
@@ -305,7 +305,7 @@
 </ol>
 </li>
 </ul>
-<p><img src="/36191/cpu3.png" alt="cpu"></p>
+<p><img src="/.io//cpu3.png" alt="cpu"></p>
 <h3 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h3><p>为了使用 trace，我需要下载 linux 系统，这里我借鉴了<a target="_blank" rel="noopener" href="https://blog.musnow.top/posts/3613882502/index.html">【Linux】wsl2 安装 ubuntu 并移动安装位置</a>，成功下载了 wsl2。</p>
 <h2 id="2025-02-23"><a href="#2025-02-23" class="headerlink" title="2025-02-23"></a>2025-02-23</h2><h3 id="上午-3"><a href="#上午-3" class="headerlink" title="上午"></a>上午</h3><ol>
 <li>成功找到了 CPU-CDE 环境，并配置好了 mipsel-linux-gcc 编译器，可以使用 trace 进行调试。准备将指令补全，然后进行测试。</li>
