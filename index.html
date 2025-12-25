@@ -52,7 +52,7 @@
 
   
 
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"forest","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
   <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
@@ -634,9 +634,9 @@
 <p>当创建 iprom 时，若我不勾选 generate address interface with 32 bits 会导致输入地址与取出的指令不一致，这也是一个问题。</p>
 <p>问题一是由于 ip 核读取时，至少会晚一个周期。所以本该被延迟的信号的下一个信号会被延迟，导致本该被延迟信号的消失。</p>
 <h3 id="下午-1"><a href="#下午-1" class="headerlink" title="下午"></a>下午</h3><p>目前成功将所有问题解决。当令 ip 核 clk 下降沿触发时，可以解决晚一个周期的问题。regfile 写入下降沿触发时为了避开上升沿写入，这样的话数据冒险可以少考虑一个周期。但是 iprom 的问题还是不能理解。</p>
-<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/.io//mips_instr.png" alt="指令"></p>
+<p>接下来的几天，我的目标就是将龙芯杯要求的所有指令都实现一遍，然后进行测试。<br><img src="/2025/02/17/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/mips_instr.png" alt="指令"></p>
 <p>算术指令，逻辑运算指令，变量位移指令（sllv, srlv, srav）,访存指令都可以复用 alu，只需要修改 alu 的控制信号即可。</p>
-<p><img src="/.io//cpu1.png" alt="cpu"><br><img src="/.io//cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
+<p><img src="/2025/02/17/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/cpu1.png" alt="cpu"><br><img src="/2025/02/17/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/cpu2.png" alt="cpu"><br>成功解决了图片问题，原因是 hexo 会生成新的 public 文件夹，将我的 md 文件转为 html 文件，所以我的图片路径需要参照 public 文件夹中的相对路径，而不是 source 文件夹中的相对路径。</p>
 <h2 id="2025-02-21"><a href="#2025-02-21" class="headerlink" title="2025-02-21"></a>2025-02-21</h2><ol>
 <li>更改 controller 与 alu 模块，使其可以支持所有指令。其中 controller 模块的控制信号生成部分没有完成，且更改部分还没有经过检测。</li>
 <li>为了便于以后更改 cpu 框架，画出了 cpu 的框架图。</li>
@@ -667,7 +667,7 @@
 </ol>
 </li>
 </ul>
-<p><img src="/.io//cpu3.png" alt="cpu"></p>
+<p><img src="/2025/02/17/%E9%BE%99%E8%8A%AF%E6%9D%AF%E6%97%A5%E8%AE%B0/cpu3.png" alt="cpu"></p>
 <h3 id="晚上"><a href="#晚上" class="headerlink" title="晚上"></a>晚上</h3><p>为了使用 trace，我需要下载 linux 系统，这里我借鉴了<a target="_blank" rel="noopener" href="https://blog.musnow.top/posts/3613882502/index.html">【Linux】wsl2 安装 ubuntu 并移动安装位置</a>，成功下载了 wsl2。</p>
 <h2 id="2025-02-23"><a href="#2025-02-23" class="headerlink" title="2025-02-23"></a>2025-02-23</h2><h3 id="上午-3"><a href="#上午-3" class="headerlink" title="上午"></a>上午</h3><ol>
 <li>成功找到了 CPU-CDE 环境，并配置好了 mipsel-linux-gcc 编译器，可以使用 trace 进行调试。准备将指令补全，然后进行测试。</li>
@@ -683,7 +683,27 @@
 <h2 id="2025-02-28"><a href="#2025-02-28" class="headerlink" title="2025-02-28"></a>2025-02-28</h2><h3 id="下午-4"><a href="#下午-4" class="headerlink" title="下午"></a>下午</h3><p>还是使用之前的验证程序，成功运行。<br>我大意了，没有闪。gettrace 需要点击一下 run all 按钮才能运行。这个小问题白白浪费了我几天时间，难受住。</p>
 <p>目前没有搞懂 pre-IF 阶段的作用，我需要进一步了解这个阶段。</p>
 <h2 id="2025-03-01"><a href="#2025-03-01" class="headerlink" title="2025-03-01"></a>2025-03-01</h2><h3 id="上午-5"><a href="#上午-5" class="headerlink" title="上午"></a>上午</h3><p>使用 trace 调试，需要重写顶层模块的输入输出，将其与 trace 的输入输出对应起来。借此我准备重构我的 cpu 代码，将其更加规范化。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">    subgraph mycpu[我的CPU架构]</span><br><span class="line">        subgraph hazard[冒险检测单元]</span><br><span class="line">            H1[数据冒险] --&gt; H2[控制冒险]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        subgraph datapath[数据通路]</span><br><span class="line">            IF[IF取指令] --&gt; ID[ID指令译码]</span><br><span class="line">            ID --&gt; EX[EX执行]</span><br><span class="line">            EX --&gt; MEM[MEM访存]</span><br><span class="line">            MEM --&gt; WB[WB写回]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        subgraph controller[控制器]</span><br><span class="line">            C1[主控制器] --&gt; C2[ALU控制器]</span><br><span class="line">            C3[分支控制] --&gt; C4[跳转控制]</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        hazard ---&gt; datapath</span><br><span class="line">        controller ---&gt; datapath</span><br><span class="line">    end</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph TB
+    subgraph mycpu[我的CPU架构]
+        subgraph hazard[冒险检测单元]
+            H1[数据冒险] --> H2[控制冒险]
+        end
+
+        subgraph datapath[数据通路]
+            IF[IF取指令] --> ID[ID指令译码]
+            ID --> EX[EX执行]
+            EX --> MEM[MEM访存]
+            MEM --> WB[WB写回]
+        end
+
+        subgraph controller[控制器]
+            C1[主控制器] --> C2[ALU控制器]
+            C3[分支控制] --> C4[跳转控制]
+        end
+
+        hazard ---> datapath
+        controller ---> datapath
+    end</pre>
 
 <h3 id="下午-5"><a href="#下午-5" class="headerlink" title="下午"></a>下午</h3><ol>
 <li>重构了 cpu 代码，我还需要完善我的 cpu 架构图，将其与代码对应起来。</li>
@@ -726,7 +746,17 @@
 <li>龙芯杯的 sram 是异步 sram,不依赖时钟信号、不需要时钟周期。</li>
 <li>目前代码的关键路径是: EXE 与 MEM 阶段的数据信号前递到 ID 阶段,这些数据又会影响到跳转信号的生成,最终前递到 IF 阶段。这形成了一个横跨三个阶段的路径。</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    EXE[EXE 阶段数据]</span><br><span class="line">    MEM[MEM 阶段数据]</span><br><span class="line">    ID[ID 阶段译码]</span><br><span class="line">    Jump[跳转信号生成]</span><br><span class="line">    IF[IF 阶段取指]</span><br><span class="line"></span><br><span class="line">    EXE --&gt;|前递| ID</span><br><span class="line">    MEM --&gt;|前递| ID</span><br><span class="line">    ID --&gt; Jump</span><br><span class="line">    Jump --&gt; IF</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">graph TD
+    EXE[EXE 阶段数据]
+    MEM[MEM 阶段数据]
+    ID[ID 阶段译码]
+    Jump[跳转信号生成]
+    IF[IF 阶段取指]
+
+    EXE -->|前递| ID
+    MEM -->|前递| ID
+    ID --> Jump
+    Jump --> IF</pre>
 
 <p>目前考虑加深流水线深度，将 ID 阶段拆分为 PreID 与 ID 阶段。</p>
 <pre><code>- PreID 阶段用于指令译码，处理前递数据
@@ -766,7 +796,7 @@
 </li>
 <li>在此基础上选择将关键路径 EXE 的计算结果，保存到 MEM 阶段的寄存器中，在前递给 ID 阶段，用于跳转。可以再次增加频率，但是会导致跳转指令与上一条指令发生数据冲突时多延迟一周期。可能需要使用 lru 分支预测器，来解决这个问题。</li>
 </ol>
-
+<script type="module"> import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';	mermaid.initialize({startOnLoad: true, flowchart: {curve: 'linear'}}); </script>
       
     </div>
 
